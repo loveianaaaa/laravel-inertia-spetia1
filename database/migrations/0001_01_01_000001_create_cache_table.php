@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cache', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->mediumText('value');
-            $table->integer('expiration');
+        Schema::create('cache', function (Blueprint $table) {//Membuat tabel baru bernama cache jika belum ada.
+            $table->string('key')->primary();//Kolom key bertipe string sebagai Primary Key (unik).
+            $table->mediumText('value');//Kolom value bertipe text untuk menyimpan data cache.
+            $table->integer('expiration');//Kolom expiration bertipe integer untuk menyimpan waktu kadaluwarsa                                               cache dalam format UNIX timestamp.
         });
 
-        Schema::create('cache_locks', function (Blueprint $table) {
-            $table->string('key')->primary();
-            $table->string('owner');
-            $table->integer('expiration');
+        Schema::create('cache_locks', function (Blueprint $table) {//Membuat tabel baru bernama cache_locks jika belum ada.
+            $table->string('key')->primary();//Kolom key bertipe string sebagai Primary Key (unik), digunakan untuk menyimpan                               nama kunci yang sedang dikunci (lock).
+            $table->string('owner');//Kolom owner menyimpan identitas pemilik lock, biasanya berupa string unik yang                             merepresentasikan proses atau thread yang memegang lock.
+            $table->integer('expiration');//Kolom expiration bertipe integer untuk menyimpan waktu kadaluwarsa                                                 lock dalam format UNIX timestamp.
+
         });
     }
 
@@ -29,7 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cache');
-        Schema::dropIfExists('cache_locks');
+        Schema::dropIfExists('cache');//Mengecek apakah tabel cache ada di database.
+        Schema::dropIfExists('cache_locks');//Mengecek apakah tabel cache_locks ada di database.                                                             Jika ada, maka tabel akan dihapus.                                                                                                                    Jika tidak ada, perintah akan diabaikan tanpa err
     }
 };
