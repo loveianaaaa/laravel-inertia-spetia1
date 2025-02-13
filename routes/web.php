@@ -8,12 +8,13 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+Route::get('/', function () { //Mendefinisikan route HTTP GET untuk URL / (halaman utama).                                                                   Saat pengguna mengakses beranda (/), Laravel akan mengeksekusi fungsi yang diberikan.                                                                      Fungsi anonim (Closure) yang akan dipanggil saat route diakses.
+    
+    return Inertia::render('Welcome', [ //Merender komponen frontend bernama Welcome yang ada di Vue.js atau React.                                    Menggunakan Inertia.js, yang menghubungkan Laravel (backend) dengan Vue atau React (frontend) tanpa perlu API REST.
+        'canLogin' => Route::has('login'),//Memeriksa apakah route dengan nama login telah didefinisikan dalam routes/web.php.
+        'canRegister' => Route::has('register'),//Memeriksa apakah route dengan nama register telah didefinisikan dalam                                    routes/web.php atau routes/auth.php.
+        'laravelVersion' => Application::VERSION,//Mengambil versi Laravel saat ini yang sedang berjalan.
+        'phpVersion' => PHP_VERSION,//Ini adalah konstanta bawaan PHP yang menyimpan versi PHP saat ini.
     ]);
 });
 
