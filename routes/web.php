@@ -35,3 +35,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+//require Digunakan untuk memasukkan file lain ke dalam script PHP.                                                                                        __DIR__ adalah konstanta PHP yang berisi path direktori file saat ini.                                                                                                                                                            /auth.php menunjukkan bahwa file auth.php berada di direktori yang sama dengan file tempat kode ini ditulis.
+
