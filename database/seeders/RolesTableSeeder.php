@@ -15,5 +15,7 @@ class RolesTableSeeder extends Seeder
     {
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'user']);
+        //Role::create([...])Menggunakan Eloquent ORM untuk menambahkan peran ke tabel roles.                                                               'name' => 'admin'Menentukan nama peran, dalam hal ini admin yang biasanya memiliki akses penuh dalam sistem.
+        //Role::create([...])Menggunakan Eloquent ORM untuk menambahkan role baru ke tabel roles.                                                           'name' => 'user'Menentukan nama peran, dalam hal ini user yang biasanya memiliki akses terbatas dibandingkan admin.
     }
 }
